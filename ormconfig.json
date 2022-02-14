@@ -1,0 +1,11 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "$Zechariah2000",
+  "database": "terra",
+  "logging": true,
+  "synchronize": true,
+  "entities": ["src/entities/*.js"]
+}

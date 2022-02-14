@@ -1,6 +1,7 @@
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express, { Application } from 'express';
+import { createConnection } from 'typeorm';
 import http from 'http';
 import schemaBuild from './resolvers';
 
@@ -9,6 +10,8 @@ export async function startApolloServer() {
   const httpServer = http.createServer(app);
 
   const schema = await schemaBuild();
+
+  const connection = createConnection();
 
   const server = new ApolloServer({
     schema: schema,

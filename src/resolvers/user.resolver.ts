@@ -5,20 +5,16 @@ import { createUserInput } from '../inputs/user.input';
 @Resolver((_of) => User)
 export class UserResolver {
   @Query((_returns) => User)
-  async getSingleUser() {
-    return {
-      id: 1,
-      email: 'omolade@gmail.com',
-      password: 'ssss',
-    };
+  async getSingleUser(@Arg('id') id: number) {
+    return User.findOne({ where: { id } });
   }
 
   @Mutation(() => User)
   async createUser(
     @Arg('body') { email, password }: createUserInput,
   ): Promise<User> {
-    const user: User = { id: 1, email, password };
-
+    const user = User.create({ email, password });
+    await user.save();
     return user;
   }
 }

@@ -1,9 +1,8 @@
 import { Field, InputType } from 'type-graphql';
-import { User } from '../entities/user.entity';
 import { IsString, Length } from 'class-validator';
 
 @InputType()
-export class createUserInput implements Omit<User, 'id'> {
+export class createUserInput  {
   @Field(() => String)
   @IsString()
   email: string;

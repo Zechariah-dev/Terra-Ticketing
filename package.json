@@ -2,7 +2,8 @@
   "name": "terra-ticketing",
   "version": "1.0.0",
   "description": "An Event Ticketing API Service",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
+  "type": "commonjs",
   "scripts": {
     "build": "npm run clean && tsc",
     "build:watch": "tsc -w",
@@ -41,9 +42,11 @@
     "express": "^4.17.1",
     "graphql": "^15.6.1",
     "graphql-tools": "^8.2.0",
+    "mysql": "^2.18.1",
     "pino": "^7.0.3",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.41",
     "uuid": "^8.3.2"
   }
 }

@@ -8,7 +8,7 @@ type Mutation {
 }
 
 type Query {
-  getSingleUser: User!
+  getSingleUser(id: Float!): User!
 }
 
 type User {
