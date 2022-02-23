@@ -1,17 +1,28 @@
+import 'dotenv/config';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express, { Application } from 'express';
 import { createConnection } from 'typeorm';
 import http from 'http';
+import cors from 'cors';
 import schemaBuild from './resolvers';
 
 export async function startApolloServer() {
   const app: Application = express();
   const httpServer = http.createServer(app);
 
+  app.disable('x-powered-by');
+
+  app.use(
+    cors({
+      origin: 'http://localhost:4000',
+      credentials: true,
+    }),
+  );
+
   const schema = await schemaBuild();
 
-  const connection = createConnection();
+  await createConnection();
 
   const server = new ApolloServer({
     schema: schema,

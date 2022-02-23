@@ -3,8 +3,14 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type LoginResponse {
+  accessToken: String!
+  user: User!
+}
+
 type Mutation {
-  createUser(body: createUserInput!): User!
+  login(body: loginUserDto!): LoginResponse!
+  register(body: createUserDto!): User!
 }
 
 type Query {
@@ -12,12 +18,24 @@ type Query {
 }
 
 type User {
+  company_name: String!
   email: String!
+  firstname: String!
   id: ID!
+  lastname: String!
+  password: String!
+  verified: Boolean
+}
+
+input createUserDto {
+  company_name: String
+  email: String!
+  firstname: String!
+  lastname: String!
   password: String!
 }
 
-input createUserInput {
+input loginUserDto {
   email: String!
   password: String!
 }

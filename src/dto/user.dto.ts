@@ -1,8 +1,9 @@
-import { Field, InputType } from 'type-graphql';
+import { Field, InputType, ObjectType } from 'type-graphql';
 import { IsString, Length, IsEmail } from 'class-validator';
+import { User } from '../entities/user.entity';
 
 @InputType()
-export class createUserInput {
+export class createUserDto {
   @Field()
   @IsString()
   firstname: string;
@@ -27,7 +28,7 @@ export class createUserInput {
 }
 
 @InputType()
-export class loginUserInput {
+export class loginUserDto {
   @Field()
   @IsString()
   @IsEmail()
