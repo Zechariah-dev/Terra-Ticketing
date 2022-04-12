@@ -3,10 +3,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  BeforeInsert,
+  OneToMany,
 } from 'typeorm';
 import { Field, ID, ObjectType } from 'type-graphql';
-import bcrypt from 'bcrypt';
+import { Ticket } from './ticket.entity';
 
 @ObjectType()
 @Entity('user')
@@ -33,11 +33,14 @@ export class User extends BaseEntity {
 
   @Field()
   @Column()
-  company_name: string;
+  contact: string;
 
-  @Field(() => Boolean, { defaultValue: false })
+  @Field()
   @Column({ nullable: true, default: false })
   verified: boolean;
+
+  @OneToMany(() => Ticket, (ticket) => ticket.id)
+  tickets: Ticket[];
 
   @Column('int', { default: 0 })
   token_version: number;

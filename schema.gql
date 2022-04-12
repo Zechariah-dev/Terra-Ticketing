@@ -18,17 +18,17 @@ type Query {
 }
 
 type User {
-  company_name: String!
+  contact: String!
   email: String!
   firstname: String!
   id: ID!
   lastname: String!
   password: String!
-  verified: Boolean
+  verified: Boolean!
 }
 
 input createUserDto {
-  company_name: String
+  contact: String!
   email: String!
   firstname: String!
   lastname: String!

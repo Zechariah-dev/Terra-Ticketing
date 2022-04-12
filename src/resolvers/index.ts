@@ -1,9 +1,9 @@
 import { buildSchema } from 'type-graphql';
-import { UserResolver } from './user.resolver';
+import { AuthResolver } from './auth.resolver';
 
 const schemaBuild = async () => {
   const schema = await buildSchema({
-    resolvers: [UserResolver],
+    resolvers: [AuthResolver],
     emitSchemaFile: true,
     validate: true,
   });
